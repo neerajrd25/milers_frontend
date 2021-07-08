@@ -35,7 +35,7 @@ const NavItem = ({
           fontWeight: 'medium',
           justifyContent: 'flex-start',
           letterSpacing: 0,
-          py: 1.25,
+          py: 1.0,
           textTransform: 'none',
           width: '100%',
           ...(active && {

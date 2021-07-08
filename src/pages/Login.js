@@ -31,14 +31,18 @@ const Login = () => {
           <Formik
             initialValues={{
               email: 'demo@devias.io',
-              password: 'Password123'
+              password: 'Password123',
+              username: 'yadneshg',
+
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+              // email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+              password: Yup.string().max(255).required('Password is required'),
+              username: Yup.string().max(20).required('Username is required')
             })}
             onSubmit={(data) => {
               console.log(data);
+              // FIX ME: call auth here
               navigate('/app/dashboard', { replace: true });
             }}
           >
@@ -67,7 +71,7 @@ const Login = () => {
                     Palghar Milers
                   </Typography>
                 </Box>
-                <TextField
+                {/* <TextField
                   error={Boolean(touched.email && errors.email)}
                   fullWidth
                   helperText={touched.email && errors.email}
@@ -78,6 +82,19 @@ const Login = () => {
                   onChange={handleChange}
                   type="email"
                   value={values.email}
+                  variant="outlined"
+                /> */}
+                <TextField
+                  error={Boolean(touched.username && errors.username)}
+                  fullWidth
+                  helperText={touched.username && errors.username}
+                  label="Username"
+                  margin="normal"
+                  name="username"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="text"
+                  value={values.username}
                   variant="outlined"
                 />
                 <TextField
