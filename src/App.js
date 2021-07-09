@@ -8,6 +8,8 @@ import 'src/mixins/chartjs';
 import routes from 'src/routes';
 import theme from 'src/theme';
 import React, { Suspense } from 'react';
+import { isLoggedIn } from './api/authentication.api';
+import useInterceptor from './auth.interceptor';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,13 +33,18 @@ const AppReactQueryProvider = ({ children }) => (
 );
 
 const App = () => {
-  const routing = useRoutes(routes);
+  console.log(isLoggedIn());
+  useInterceptor(isLoggedIn());
+  const routing = useRoutes(routes(isLoggedIn()));
 
   return (
     <AppReactQueryProvider>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Suspense fallback={<div isLoading />}>{routing}</Suspense>
+        <Suspense fallback={<div isLoading> Loading </div>}>
+          {' '}
+          {routing}
+        </Suspense>
       </ThemeProvider>
     </AppReactQueryProvider>
   );

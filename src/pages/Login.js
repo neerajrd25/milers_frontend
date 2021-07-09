@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
 import {
   Box,
   Button,
@@ -9,9 +9,41 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
+import { Formik } from 'formik';
+import { Helmet } from 'react-helmet';
+import { useMutation } from 'react-query';
+import { useHistory, useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { signIn } from '../api/authentication.api';
 
 const Login = () => {
   const navigate = useNavigate();
+  // const history = useHistory();
+  // console.log(data);
+  // // FIX ME: call auth here
+  const { mutate: signInMutation } = useMutation(signIn, {
+    onSuccess: () => {
+      console.log('Client User has been added successfully');
+      // cache.refetchQueries('userListingPagniation');
+      // history.push('/users');
+      navigate('/app/dashboard', { replace: true });
+    },
+    onError: (dataError) => {
+      console.log(dataError);
+      // error(dataError?.response?.data?.message? dataError?.response?.data?.message : dataError?.response?.data);
+    },
+  });
+
+  const doLogin = async (data) => {
+    const {
+      username, password,
+    } = data;
+    console.log(password, 'psss');
+    signInMutation({
+      username,
+      password,
+    });
+  };
 
   return (
     <>
@@ -31,20 +63,15 @@ const Login = () => {
           <Formik
             initialValues={{
               email: 'demo@devias.io',
-              password: 'Password123',
-              username: 'yadneshg',
-
+              password: '123456',
+              username: 'yadnesh'
             }}
             validationSchema={Yup.object().shape({
               // email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
               password: Yup.string().max(255).required('Password is required'),
               username: Yup.string().max(20).required('Username is required')
             })}
-            onSubmit={(data) => {
-              console.log(data);
-              // FIX ME: call auth here
-              navigate('/app/dashboard', { replace: true });
-            }}
+            onSubmit={(data) => doLogin(data)}
           >
             {({
               errors,
@@ -57,10 +84,7 @@ const Login = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
-                  <Typography
-                    color="textPrimary"
-                    variant="h2"
-                  >
+                  <Typography color="textPrimary" variant="h2">
                     Sign in
                   </Typography>
                   <Typography

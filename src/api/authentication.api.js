@@ -1,9 +1,15 @@
+/* eslint-disable no-debugger */
 import axios from 'axios';
+import jwt from 'jwt-decode';
+// import dependency
 
-export const signin = (username, password) => axios.post('/api/auth/signin', { username, password })
+const { REACT_APP_API_BASE_URL } = process.env;
+
+export const signIn = (data) => axios.post(`${REACT_APP_API_BASE_URL}auth/login`, data)
   .then((response) => {
-    if (response.data.accessToken) {
-      localStorage.setItem('user', JSON.stringify(response.data));
+    console.log(response);
+    if (response.data.token) {
+      localStorage.setItem('USER', JSON.stringify(response.data));
     }
     return response.data;
   })
@@ -13,5 +19,23 @@ export const signin = (username, password) => axios.post('/api/auth/signin', { u
   });
 
 export const signOut = () => {
-  localStorage.removeItem('user');
+  localStorage.removeItem('USER');
+};
+
+export const isLoggedIn = () => {
+  const user = localStorage.getItem('USER');
+  let result = false;
+  if (user) {
+    const { token } = JSON.parse(user);
+    const decodedToken = jwt(token);
+    const currentDate = new Date();
+    // JWT exp is in seconds
+    if (decodedToken.exp * 1000 < currentDate.getTime()) {
+      console.log('Token expired.');
+    } else {
+      console.log('Valid token');
+      result = true;
+    }
+  }
+  return result;
 };

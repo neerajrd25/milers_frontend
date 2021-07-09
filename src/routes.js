@@ -7,14 +7,13 @@ import Dashboard from 'src/pages/Dashboard';
 import Login from 'src/pages/Login';
 import NotFound from 'src/pages/NotFound';
 import ProductList from 'src/pages/ProductList';
-import Register from 'src/pages/Register';
 import Settings from 'src/pages/Settings';
 import BrandList from './pages/BrandList';
 
-const routes = [
+const routes = (isLoggedIn) => [
   {
-    path: 'app',
-    element: <DashboardLayout />,
+    path: '/app',
+    element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" />,
     children: [
       { path: 'account', element: <Account /> },
       { path: 'customers', element: <CustomerList /> },
@@ -27,15 +26,14 @@ const routes = [
   },
   {
     path: '/',
-    element: <MainLayout />,
+    element: !isLoggedIn ? <MainLayout /> : <Navigate to="/app/dashboard" />,
     children: [
       { path: 'login', element: <Login /> },
-      { path: 'register', element: <Register /> },
-      { path: '404', element: <NotFound /> },
       { path: '/', element: <Navigate to="/login" /> },
+      { path: '404', element: <NotFound /> },
       { path: '*', element: <Navigate to="/404" /> }
-    ]
-  }
+    ],
+  },
 ];
 
 export default routes;

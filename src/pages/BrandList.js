@@ -12,7 +12,7 @@ const BrandList = () => {
   return (
     <>
       <Helmet>
-        <title>Brands | Material Kit</title>
+        <title>Brands | Palghar Milers</title>
       </Helmet>
       <Box
         sx={{
