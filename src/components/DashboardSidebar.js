@@ -11,7 +11,6 @@ import {
 } from '@material-ui/core';
 import {
   BarChart as BarChartIcon,
-  Lock as LockIcon,
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
@@ -42,8 +41,13 @@ const items = [
     icon: UsersIcon,
     title: 'Customers'
   },
+  // {
+  //   href: '/app/products',
+  //   icon: ShoppingBagIcon,
+  //   title: 'Products'
+  // },
   {
-    href: '/app/products',
+    href: '/app/commodities',
     icon: ShoppingBagIcon,
     title: 'Products'
   },
@@ -57,16 +61,16 @@ const items = [
     icon: SettingsIcon,
     title: 'Settings'
   },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
+  // {
+  //   href: '/login',
+  //   icon: LockIcon,
+  //   title: 'Login'
+  // },
   {
     href: '/register',
     icon: UserPlusIcon,
     title: 'Register'
-  },
+  }
 ];
 
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
@@ -94,16 +98,10 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           p: 2
         }}
       >
-        <Typography
-          color="textPrimary"
-          variant="h5"
-        >
+        <Typography color="textPrimary" variant="h5">
           {user.name}
         </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
+        <Typography color="textSecondary" variant="body2">
           {user.jobTitle}
         </Typography>
       </Box>
@@ -121,7 +119,6 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
       <Box sx={{ flexGrow: 1 }} />
-
     </Box>
   );
 
@@ -168,7 +165,7 @@ DashboardSidebar.propTypes = {
 };
 
 DashboardSidebar.defaultProps = {
-  onMobileClose: () => { },
+  onMobileClose: () => {},
   openMobile: false
 };
 

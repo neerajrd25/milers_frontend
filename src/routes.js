@@ -9,6 +9,7 @@ import NotFound from 'src/pages/NotFound';
 import ProductList from 'src/pages/ProductList';
 import Settings from 'src/pages/Settings';
 import BrandList from './pages/BrandList';
+import CommodityList from './pages/CommodityList';
 
 const routes = (isLoggedIn) => [
   {
@@ -20,6 +21,8 @@ const routes = (isLoggedIn) => [
       { path: 'brands', element: <BrandList /> },
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'products', element: <ProductList /> },
+      { path: 'commodities', element: <CommodityList /> },
+
       { path: 'settings', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
