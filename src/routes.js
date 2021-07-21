@@ -10,6 +10,9 @@ import ProductList from 'src/pages/ProductList';
 import Settings from 'src/pages/Settings';
 import BrandList from './pages/BrandList';
 import CommodityList from './pages/CommodityList';
+import AddProduct from './pages/Product/add-product';
+import VendorComponent from './pages/Vendor/index';
+import AddVendorPage from './pages/Vendor/add-vendor';
 
 const routes = (isLoggedIn) => [
   {
@@ -21,8 +24,17 @@ const routes = (isLoggedIn) => [
       { path: 'brands', element: <BrandList /> },
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'products', element: <ProductList /> },
-      { path: 'commodities', element: <CommodityList /> },
+      { path: 'vendors', element: <VendorComponent /> },
+      { path: 'vendors/add', element: <AddVendorPage /> },
 
+      {
+        path: 'commodities',
+        element: <CommodityList />,
+        // children: [
+        //   { path: 'add', element: <AddProduct /> },
+        // ]
+      },
+      { path: 'products/add', element: <AddProduct /> },
       { path: 'settings', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]

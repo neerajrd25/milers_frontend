@@ -33,15 +33,15 @@ const AppReactQueryProvider = ({ children }) => (
 );
 
 const App = () => {
-  console.log(isLoggedIn());
-  useInterceptor(isLoggedIn());
-  const routing = useRoutes(routes(isLoggedIn()));
+  const isLogged = isLoggedIn();
+  useInterceptor(isLogged);
+  const routing = useRoutes(routes(isLogged));
 
   return (
     <AppReactQueryProvider>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Suspense fallback={<div isLoading> Loading </div>}>
+        <Suspense fallback={<div isloading> Loading </div>}>
           {' '}
           {routing}
         </Suspense>

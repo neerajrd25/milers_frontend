@@ -33,7 +33,7 @@ export const isLoggedIn = () => {
     if (decodedToken.exp * 1000 < currentDate.getTime()) {
       console.log('Token expired.');
     } else {
-      console.log('Valid token');
+      // console.log('Valid token');
       result = true;
     }
   }

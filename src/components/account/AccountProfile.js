@@ -3,7 +3,6 @@ import {
   Avatar,
   Box,
   Button,
-  Card,
   CardActions,
   CardContent,
   Divider,
@@ -19,8 +18,8 @@ const user = {
   timezone: 'GTM-7'
 };
 
-const AccountProfile = (props) => (
-  <Card {...props}>
+const AccountProfile = () => (
+  <>
     <CardContent>
       <Box
         sx={{
@@ -67,7 +66,7 @@ const AccountProfile = (props) => (
         Upload picture
       </Button>
     </CardActions>
-  </Card>
+  </>
 );
 
 export default AccountProfile;

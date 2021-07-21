@@ -15,7 +15,8 @@ import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-const CommodityListResults = ({ listData, ...rest }) => {
+const VendorList = ({ listData, ...rest }) => {
+  console.log('listData', listData);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
@@ -35,9 +36,9 @@ const CommodityListResults = ({ listData, ...rest }) => {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell>Brand</TableCell>
-                <TableCell>Product Type</TableCell>
-                <TableCell>User</TableCell>
+                <TableCell>Address</TableCell>
+                <TableCell>GST Number</TableCell>
+                <TableCell>Contact</TableCell>
                 <TableCell>More</TableCell>
               </TableRow>
             </TableHead>
@@ -46,12 +47,24 @@ const CommodityListResults = ({ listData, ...rest }) => {
                 <TableRow hover key={rowData.id}>
                   <TableCell>
                     <Typography color="textPrimary" variant="body1">
-                      {rowData.name}
+                      {rowData.businessName}
                     </Typography>
                   </TableCell>
-                  <TableCell>{rowData.brand.name}</TableCell>
-                  <TableCell>{rowData.productType.name}</TableCell>
-                  <TableCell>{rowData.productUser}</TableCell>
+                  <TableCell>
+                    {rowData.address}
+                    {' '}
+                    <br />
+                    {' '}
+                    {rowData.city}
+                    ,
+                    {' '}
+                    <br />
+                    {' '}
+                    {rowData.pincode}
+                    {' '}
+                  </TableCell>
+                  <TableCell>{rowData.gstNumber}</TableCell>
+                  <TableCell>{rowData.contact}</TableCell>
                   <TableCell>
                     <IconButton size="small">
                       <ArrowRightIcon />
@@ -75,9 +88,12 @@ const CommodityListResults = ({ listData, ...rest }) => {
     </Card>
   );
 };
-
-CommodityListResults.propTypes = {
-  listData: PropTypes.array.isRequired
+VendorList.defaultProps = {
+  listData: [],
 };
 
-export default CommodityListResults;
+VendorList.propTypes = {
+  listData: PropTypes.array
+};
+
+export default VendorList;
