@@ -10,6 +10,7 @@ import theme from 'src/theme';
 import React, { Suspense } from 'react';
 import { isLoggedIn } from './api/authentication.api';
 import useInterceptor from './auth.interceptor';
+import AppSnackbarProvider from './AppSnackbarProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,13 +40,17 @@ const App = () => {
 
   return (
     <AppReactQueryProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Suspense fallback={<div isloading> Loading </div>}>
-          {' '}
-          {routing}
-        </Suspense>
-      </ThemeProvider>
+      <AppSnackbarProvider>
+
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Suspense fallback={<div isloading> Loading </div>}>
+            {' '}
+            {routing}
+          </Suspense>
+        </ThemeProvider>
+      </AppSnackbarProvider>
+
     </AppReactQueryProvider>
   );
 };

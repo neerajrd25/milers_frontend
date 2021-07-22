@@ -20,7 +20,12 @@ const AddVendorPage = () => {
       <Box>
         <Container maxWidth={false}>
           <Box sx={{ pt: 3 }}>
-            <AddVendorComponent submit={handleSubmit} defaultValues={{ businessName: 'neeraj' }} title="Add Vendor" />
+            <AddVendorComponent
+              submit={handleSubmit}
+              defaultValues={{ businessName: 'neeraj' }}
+              title="Add Vendor"
+              showBackButton
+            />
           </Box>
         </Container>
       </Box>

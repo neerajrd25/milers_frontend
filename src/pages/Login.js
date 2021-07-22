@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-
 import {
   Box,
   Button,
@@ -12,7 +8,7 @@ import {
 import { Formik } from 'formik';
 import { Helmet } from 'react-helmet';
 import { useMutation } from 'react-query';
-import { useHistory, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { signIn } from '../api/authentication.api';
 

@@ -1,13 +1,17 @@
 import {
   Box,
   Button,
+  IconButton,
   Card,
-  CardContent, InputAdornment, SvgIcon, TextField, Typography
+  CardContent, Grid, InputAdornment, SvgIcon, TextField, Typography
 } from '@material-ui/core';
 import { PropTypes } from 'prop-types';
 import { Search as SearchIcon } from 'react-feather';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
-const ListToolbar = ({ title, handleClick, buttonText }) => (
+const ListToolbar = ({
+  title, handleClick, buttonText, showBackButton
+}) => (
   <Box>
     <Box
       sx={{
@@ -15,6 +19,13 @@ const ListToolbar = ({ title, handleClick, buttonText }) => (
         justifyContent: 'space-between'
       }}
     >
+      {showBackButton && (
+      <Grid item>
+        <IconButton aria-label="back">
+          <ArrowBack />
+        </IconButton>
+      </Grid>
+      )}
       <Typography variant="h4" gutterBottom>
         {title}
       </Typography>
@@ -73,13 +84,15 @@ const ListToolbar = ({ title, handleClick, buttonText }) => (
 ListToolbar.defaultProps = {
   title: 'List',
   buttonText: 'Add',
+  showBackButton: true,
 
 };
 
 ListToolbar.propTypes = {
   title: PropTypes.string,
   handleClick: PropTypes.func,
-  buttonText: PropTypes.string
+  buttonText: PropTypes.string,
+  showBackButton: PropTypes.bool,
 
 };
 
