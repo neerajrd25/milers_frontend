@@ -40,16 +40,15 @@ const App = () => {
 
   return (
     <AppReactQueryProvider>
-      <AppSnackbarProvider>
-
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <AppSnackbarProvider>
           <GlobalStyles />
           <Suspense fallback={<div isloading> Loading </div>}>
             {' '}
             {routing}
           </Suspense>
-        </ThemeProvider>
-      </AppSnackbarProvider>
+        </AppSnackbarProvider>
+      </ThemeProvider>
 
     </AppReactQueryProvider>
   );

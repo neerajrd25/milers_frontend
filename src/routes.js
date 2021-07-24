@@ -13,6 +13,7 @@ import CommodityList from './pages/CommodityList';
 import AddProduct from './pages/Product/add-product';
 import VendorComponent from './pages/Vendor/index';
 import AddVendorPage from './pages/Vendor/add-vendor';
+import VendorDetailPage from './pages/Vendor/vendor-detail';
 
 const routes = (isLoggedIn) => [
   {
@@ -26,6 +27,7 @@ const routes = (isLoggedIn) => [
       { path: 'products', element: <ProductList /> },
       { path: 'vendors', element: <VendorComponent /> },
       { path: 'vendors/add', element: <AddVendorPage /> },
+      { path: 'vendors/:id', element: <VendorDetailPage /> },
 
       {
         path: 'commodities',

@@ -10,13 +10,13 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 const VendorList = ({ listData, ...rest }) => {
-  console.log('listData', listData);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
@@ -67,7 +67,9 @@ const VendorList = ({ listData, ...rest }) => {
                   <TableCell>{rowData.contact}</TableCell>
                   <TableCell>
                     <IconButton size="small">
-                      <ArrowRightIcon />
+                      <RouterLink to={`/app/vendors/${rowData.id}`}>
+                        <ArrowRightIcon />
+                      </RouterLink>
                     </IconButton>
                   </TableCell>
                 </TableRow>
@@ -83,7 +85,7 @@ const VendorList = ({ listData, ...rest }) => {
         onRowsPerPageChange={handleLimitChange}
         page={page}
         rowsPerPage={limit}
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[1, 5, 10, 25]}
       />
     </Card>
   );

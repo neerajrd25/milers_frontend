@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import { Helmet } from 'react-helmet';
 import { useQuery } from 'react-query';
@@ -13,7 +14,13 @@ const VendorComponent = () => {
   const handleClick = () => {
     naviagte('../vendors/add');
   };
-  console.log('query ', listData);
+  // let inputList = [...listData];
+  const [tableData, setTableData] = useState(listData || []);
+  const handleSearch = (val) => {
+    console.log(val);
+    const inputList = listData.filter((obj) => obj.businessName.toLowerCase().includes(val.toLowerCase()));
+    setTableData(inputList);
+  };
   return (
     <>
       <Helmet>
@@ -28,8 +35,14 @@ const VendorComponent = () => {
       >
         <Container maxWidth={false}>
           <Box sx={{ pt: 3 }}>
-            <ListToolbar title="Vendors" handleClick={handleClick} buttonText="Add Vendor" />
-            <VendorList listData={listData} />
+            <ListToolbar
+              title="Vendors"
+              handleClick={handleClick}
+              handleSearch={handleSearch}
+              buttonText="Add Vendor"
+              showBackButton={false}
+            />
+            <VendorList listData={tableData} />
           </Box>
         </Container>
       </Box>

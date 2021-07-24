@@ -18,6 +18,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 // import ArrowBack from '@material-ui/icons/ArrowBack';
+import useSnackbarContext from '../../hooks/useSnackbarContext';
 
 const schema = Yup.object().shape({
   businessName: Yup.string().max(50).min(4).required(),
@@ -43,9 +44,8 @@ const AddVendorComponent = ({
   });
   const { isValid, isDirty, errors } = formState;
 
-  // const { success, error } = useSnackbarContext();
-  // success('Success');
-  console.log(errors, isValid, isDirty);
+  const { success, error } = useSnackbarContext();
+  // console.log(errors, isValid, isDirty);
   const renderTextField = (
     name,
     label,
@@ -63,7 +63,7 @@ const AddVendorComponent = ({
         error={!!errors[name]}
         onChange={onChange}
         helperText={errors && errors[name]?.message}
-        InputProps={{ disableUnderline: true, ...inputProps }}
+        InputProps={{ ...inputProps }}
         {...register(name)}
         {...otherProps}
       />
@@ -79,6 +79,7 @@ const AddVendorComponent = ({
       },
       onError: ({ response: { data: { code, message } } }) => {
         console.log('error', message);
+        // success('Success');
         alert(`Error ${message}`);
       }
     }
