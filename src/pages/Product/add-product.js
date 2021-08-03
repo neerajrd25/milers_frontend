@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { COMPANY } from '../../utils/messages.constants';
 import AddProductComponent from '../../components/commodity/AddProductComponent';
 
-const CustomerList = () => {
+const AddProductPage = () => {
   const handleSubmit = (formData) => {
     console.log('formData', formData);
   };
@@ -19,7 +19,7 @@ const CustomerList = () => {
       <Box>
         <Container maxWidth={false}>
           <Box sx={{ pt: 3 }}>
-            <AddProductComponent submit={handleSubmit} defaultValues={{ name: 'neeraj', productUser: 'Women' }} title="Add Product" />
+            <AddProductComponent submit={handleSubmit} defaultValues={{ name: 'neeraj', }} title="Add Product" />
           </Box>
         </Container>
       </Box>
@@ -27,4 +27,4 @@ const CustomerList = () => {
   );
 };
 
-export default CustomerList;
+export default AddProductPage;

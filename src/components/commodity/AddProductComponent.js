@@ -1,199 +1,180 @@
-import * as React from 'react';
+/* eslint-disable no-unused-vars */
 
 import {
+  Autocomplete,
   Box,
   Button,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  Checkbox,
-  Divider,
-  FormHelperText,
-  Link,
-  TextField,
-  Typography
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-import Grid from '@material-ui/core/Grid';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import { Formik } from 'formik';
+import { useForm, Controller } from 'react-hook-form';
+
 import { PropTypes } from 'prop-types';
-import { useQuery } from 'react-query';
-import { Link as RouterLink } from 'react-router-dom';
+import * as React from 'react';
+import { useState } from 'react';
+import { useQuery, useMutation } from 'react-query';
 import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { createProduct } from 'src/api/product.api';
+
 import { getProductTypes, getProductUsers } from '../../api/product.api';
+
+const schema = Yup.object().shape({
+  name: Yup.string().max(50).min(4).required(),
+  year: Yup.string().max(4).min(4).required()
+  // productType: Yup.string().required()
+});
 
 const AddProductComponent = ({ submit, defaultValues, title }) => {
   //   const navigate = useNavigate();
-  const [productType, setProductType] = React.useState({ id: 1, name: 'Bicycles' });
-  console.log(setProductType);
+  const [productType, setProductType] = useState({ id: 1, name: 'Bicycles' });
   // console.log(defaultValues);
-  const { data: { data: productUsers } } = useQuery(['GetProductUsers'], () => getProductUsers());
-  const { data: { data: productTypes } } = useQuery(['GetProductTypes'], () => getProductTypes());
+  const {
+    data: { data: productUsers }
+  } = useQuery(['GetProductUsers'], () => getProductUsers());
+  const {
+    data: { data: productTypes }
+  } = useQuery(['GetProductTypes'], () => getProductTypes());
+  const { register, handleSubmit, control, formState, onChange } = useForm({
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
+    resolver: yupResolver(schema)
+  });
 
-  console.log(productUsers);
-  console.log(productTypes);
+  const { isValid, isDirty, errors } = formState;
+  const renderTextField = (
+    name,
+    label,
+    validation = {},
+    inputProps = {},
+    otherProps = {}
+  ) => (
+    <Grid item md={6} xs={12}>
+      <TextField
+        fullWidth
+        name={name}
+        id={name}
+        label={label}
+        variant="outlined"
+        error={!!errors[name]}
+        onChange={onChange}
+        helperText={errors && errors[name]?.message}
+        InputProps={{ ...inputProps }}
+        {...register(name)}
+        {...otherProps}
+      />
+    </Grid>
+  );
 
+  const { mutate: createProductMutation, isLoading } = useMutation(
+    createProduct,
+    {
+      onSuccess: () => {
+        // success('Success');
+        console.log('success');
+        // cache.refetchQueries('userListingPagniation');
+      },
+      onError: ({
+        response: {
+          data: { code, message }
+        }
+      }) => {
+        console.log('error', message);
+        // success('Success');
+        alert(`Error ${message}`);
+      }
+    }
+  );
+  const submitData = async (data) => {
+    // const {
+    //   userId, firstName, lastName, emailId, displayName, phoneNumber, preferredLanguage,
+    // } = data;
+    console.log(data);
+    // createProductMutation(data);
+  };
+  const handleChange = (v) => console.log(v);
+  const age = 20;
   return (
     <>
-      <Formik
-        initialValues={defaultValues}
-        validationSchema={Yup.object().shape({
-          // email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-          // name: Yup.string().max(255).required('First name is required'),
-          name: Yup.string().max(50).required('Name is required'),
-          // password: Yup.string().max(255).required('password is required'),
-          // policy: Yup.boolean().oneOf([true], 'This field must be checked')
-        })}
-        onSubmit={(data) => {
-          submit(data);
-          // navigate('/app/dashboard', { replace: true });
-        }}
-      >
-        {({
-          errors,
-          handleBlur,
-          handleChange,
-          handleSubmit,
-          isSubmitting,
-          touched,
-          values
-        }) => (
-          <Card>
-            <form onSubmit={handleSubmit}>
-              <CardHeader
-                title={title}
-                subheader="Bikes, Accesories, Components, etc"
-                titleTypographyProps={{ color: 'textPrimary', variant: 'h3' }}
-              />
-              <CardContent>
-                <Grid container spacing={6}>
-                  <Grid md={6} item>
-                    <FormControl>
-                      <TextField
-                        error={Boolean(touched.name && errors.name)}
-                        helperText={touched.name && errors.name}
-                        label="Name"
-                        margin="normal"
-                        name="name"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.name}
-                        variant="outlined"
+      <Card>
+        <form noValidate onSubmit={handleSubmit(submitData)}>
+          <CardHeader
+            title={title}
+            subheader="Vendor Management"
+            titleTypographyProps={{ color: 'textPrimary', variant: 'h3' }}
+          />
+          <CardContent>
+            <Grid container spacing={2}>
+              {renderTextField('name', 'Name')}
+              {renderTextField('description', 'Description')}
+              {renderTextField('year', 'Year')}
+              <Grid item md={6} xs={12}>
+                <FormControl fullWidth>
+                  {/* <InputLabel id="input-language" htmlFor="preferredLanguage">
+                    Product Type
+                  </InputLabel> */}
+                  <Controller
+                    control={control}
+                    name="productType"
+                    render={({ name, value }) => (
+                      <Autocomplete
+                        disablePortal
+                        id="productType"
+                        options={productTypes}
+                        getOptionLabel={(option) => option.name}
+                        getOptionSelected={(option, selectedValue) => option.id === selectedValue.id}
+                        value={value}
+                        onChange={(val) => handleChange(val)}
+                        name={name}
+                        renderInput={(params) => (
+                          <TextField
+                            {...register('productType')}
+                            name={name}
+                            {...params}
+                            label="Product Type"
+                          />
+                        )}
                       />
-                    </FormControl>
-                  </Grid>
-                </Grid>
-                <Grid md={6} item>
-                  <FormControl>
-                    <InputLabel id="userLabel">Product Type</InputLabel>
-                    <Select
-                      id="productType"
-                      label="Product Type"
-                      value={productType}
-                    >
-                      {productTypes.map((option) => (
-                        <MenuItem key={option.id} value={option}>
-                          {option.name}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid md={6} item>
-                  <FormControl>
-                    d
-                  </FormControl>
-                </Grid>
-                <Divider />
-                {productType.id === 1 && <span> Hello </span>}
-                {/* <TextField
-                  error={Boolean(touched.lastName && errors.lastName)}
-                  fullWidth
-                  helperText={touched.lastName && errors.lastName}
-                  label="Last name"
-                  margin="normal"
-                  name="lastName"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.lastName}
-                  variant="outlined"
-                /> */}
-                <Grid md={6} item>
-                  <FormControl>
-                    <InputLabel id="userLabel">Product Users</InputLabel>
-                    <Select
-                      id="userSelection"
-                      label="Product Users"
-                      value={values.productUser}
-                    >
-                      {productUsers.map((option) => (
-                        <MenuItem key={option.id} value={option.id}>
-                          {option.name}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Box
-                  sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    ml: -1
-                  }}
-                >
-                  <Checkbox
-                    checked={values.policy}
-                    name="policy"
-                    onChange={handleChange}
+                    )}
                   />
-                  <Typography color="textSecondary" variant="body1">
-                    I have read the
-                    {' '}
-                    <Link
-                      color="primary"
-                      component={RouterLink}
-                      to="#"
-                      underline="always"
-                      variant="h6"
-                    >
-                      Terms and Conditions
-                    </Link>
-                  </Typography>
-                </Box>
-                {Boolean(touched.policy && errors.policy) && (
-                <FormHelperText error>{errors.policy}</FormHelperText>
-                )}
-              </CardContent>
-              <CardActions>
-                <Box sx={{ py: 2 }}>
-                  <Button
-                    color="primary"
-                    disabled={isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
-                    SAVE
-                  </Button>
-                </Box>
-              </CardActions>
-              {/* <Typography color="textSecondary" variant="body1">
-                Have an account?
-                {' '}
-                {' '}
-                <Link component={RouterLink} to="/login" variant="h6">
-                  Sign in
-                </Link>
-              </Typography> */}
-            </form>
-          </Card>
-        )}
-      </Formik>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </CardContent>
+          <CardActions />
+
+          <Box sx={{ py: 1, px: 2 }}>
+            <Grid cotainer direction="row" spacing={2}>
+              <Grid item xs={12} md={6}>
+                <Button
+                  color="primary"
+                  disabled={!isValid}
+                  size="large"
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  sx={{ my: 2 }}
+                >
+                  SAVE
+                </Button>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Button color="secondary" fullWidth size="large" type="reset">
+                  Cancel
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
+        </form>
+      </Card>
     </>
   );
 };

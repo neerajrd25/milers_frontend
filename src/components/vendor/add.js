@@ -96,13 +96,6 @@ const AddVendorComponent = ({
     <>
       <Card>
         <form noValidate onSubmit={handleSubmit(submitData)}>
-          {/* {showBackButton && (
-            <Grid item>
-              <IconButton aria-label="back">
-                <ArrowBack />
-              </IconButton>
-            </Grid>
-          )} */}
           <CardHeader
             title={title}
             subheader="Vendor Management"

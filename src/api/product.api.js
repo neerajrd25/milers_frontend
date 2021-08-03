@@ -14,4 +14,7 @@ export const getProducts = async () => axios.get(`${REACT_APP_API_BASE_URL}produ
 // vendor
 export const getVendors = async () => axios.get(`${REACT_APP_API_BASE_URL}vendors`);
 export const getOneVendor = async (id) => axios.get(`${REACT_APP_API_BASE_URL}vendors/${id}`);
+
+// create apis
 export const createVendor = async (payload) => axios.post(`${REACT_APP_API_BASE_URL}vendors`, payload);
+export const createProduct = async (payload) => axios.post(`${REACT_APP_API_BASE_URL}products`, payload);
