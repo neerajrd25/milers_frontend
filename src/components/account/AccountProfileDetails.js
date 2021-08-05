@@ -7,22 +7,22 @@ import {
   CardHeader,
   Divider,
   Grid,
-  TextField
+  TextField,
 } from '@material-ui/core';
 
 const states = [
   {
     value: 'alabama',
-    label: 'Alabama'
+    label: 'Alabama',
   },
   {
     value: 'new-york',
-    label: 'New York'
+    label: 'New York',
   },
   {
     value: 'san-francisco',
-    label: 'San Francisco'
-  }
+    label: 'San Francisco',
+  },
 ];
 
 const AccountProfileDetails = (props) => {
@@ -32,13 +32,13 @@ const AccountProfileDetails = (props) => {
     email: 'demo@devias.io',
     phone: '',
     state: 'Alabama',
-    country: 'USA'
+    country: 'USA',
   });
 
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -168,7 +168,7 @@ const AccountProfileDetails = (props) => {
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
-            p: 2
+            p: 2,
           }}
         >
           <Button

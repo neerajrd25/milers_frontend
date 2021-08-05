@@ -6,7 +6,7 @@ import {
   CardContent,
   Divider,
   Grid,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -16,7 +16,7 @@ const ProductCard = ({ product, ...rest }) => (
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      height: '100%'
+      height: '100%',
     }}
     {...rest}
   >
@@ -25,7 +25,7 @@ const ProductCard = ({ product, ...rest }) => (
         sx={{
           display: 'flex',
           justifyContent: 'center',
-          pb: 3
+          pb: 3,
         }}
       >
         <Avatar
@@ -62,7 +62,7 @@ const ProductCard = ({ product, ...rest }) => (
           item
           sx={{
             alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
           }}
         >
           <AccessTimeIcon color="action" />
@@ -79,7 +79,7 @@ const ProductCard = ({ product, ...rest }) => (
           item
           sx={{
             alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
           }}
         >
           <GetAppIcon color="action" />
@@ -100,7 +100,7 @@ const ProductCard = ({ product, ...rest }) => (
 );
 
 ProductCard.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductCard;

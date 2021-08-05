@@ -13,7 +13,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import getInitials from 'src/utils/getInitials';
 
@@ -47,7 +47,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
     } else if (selectedIndex > 0) {
       newSelectedCustomerIds = newSelectedCustomerIds.concat(
         selectedCustomerIds.slice(0, selectedIndex),
-        selectedCustomerIds.slice(selectedIndex + 1)
+        selectedCustomerIds.slice(selectedIndex + 1),
       );
     }
 
@@ -115,7 +115,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
                     <Box
                       sx={{
                         alignItems: 'center',
-                        display: 'flex'
+                        display: 'flex',
                       }}
                     >
                       <Avatar
@@ -164,7 +164,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
 };
 
 CustomerListResults.propTypes = {
-  customers: PropTypes.array.isRequired
+  customers: PropTypes.array.isRequired,
 };
 
 export default CustomerListResults;

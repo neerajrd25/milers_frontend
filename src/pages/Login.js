@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 import {
   Box,
   Button,
   Container,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import { Formik } from 'formik';
 import { Helmet } from 'react-helmet';
@@ -52,7 +53,7 @@ const Login = () => {
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
         <Container maxWidth="sm">
@@ -60,12 +61,12 @@ const Login = () => {
             initialValues={{
               email: 'demo@devias.io',
               password: '123456',
-              username: 'yadnesh'
+              username: 'yadnesh',
             }}
             validationSchema={Yup.object().shape({
               // email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
               password: Yup.string().max(255).required('Password is required'),
-              username: Yup.string().max(20).required('Username is required')
+              username: Yup.string().max(20).required('Username is required'),
             })}
             onSubmit={(data) => doLogin(data)}
           >
@@ -76,7 +77,7 @@ const Login = () => {
               handleSubmit,
               isSubmitting,
               touched,
-              values
+              values,
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>

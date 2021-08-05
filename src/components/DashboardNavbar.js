@@ -7,7 +7,7 @@ import {
   Box,
   Hidden,
   IconButton,
-  Toolbar
+  Toolbar,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
@@ -39,12 +39,14 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
 
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
-            <InputIcon onClick={() => {
+          <IconButton
+            color="inherit"
+            onClick={() => {
               localStorage.removeItem('USER');
               navigate('/');
             }}
-            />
+          >
+            <InputIcon />
           </IconButton>
         </Hidden>
         <Hidden lgUp>
@@ -61,7 +63,7 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
 };
 
 DashboardNavbar.propTypes = {
-  onMobileNavOpen: PropTypes.func
+  onMobileNavOpen: PropTypes.func,
 };
 
 export default DashboardNavbar;

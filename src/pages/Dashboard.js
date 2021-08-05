@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import {
   Box,
   Container,
-  Grid
+  Grid,
 } from '@material-ui/core';
 import Budget from 'src/components/dashboard//Budget';
 import LatestOrders from 'src/components/dashboard//LatestOrders';
@@ -22,7 +22,7 @@ const Dashboard = () => (
       sx={{
         backgroundColor: 'background.default',
         minHeight: '100%',
-        py: 3
+        py: 3,
       }}
     >
       <Container maxWidth={false}>

@@ -17,16 +17,16 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       retry: false,
-      suspense: true
+      suspense: true,
     },
     mutations: {
-      useErrorBoundary: false
-    }
-  }
+      useErrorBoundary: false,
+    },
+  },
 });
 
 setLogger({
-  error: () => {}
+  error: () => {},
 });
 
 const AppReactQueryProvider = ({ children }) => (
@@ -54,7 +54,7 @@ const App = () => {
   );
 };
 AppReactQueryProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default App;

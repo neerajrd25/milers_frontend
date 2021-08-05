@@ -16,10 +16,23 @@
     "testing-library",
     "jest-dom"
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "."
+        ],
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    }
+  },
   "rules": {
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
-    "no-console": 2,
+    "no-console": "off",
     "testing-library/await-async-query": 2,
     "testing-library/no-await-sync-query": 2,
     "testing-library/no-debug": 2,
@@ -29,6 +42,11 @@
     "jest-dom/prefer-to-have-attribute": 2,
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "indent": ["error", 2, { "ignoredNodes": ["TemplateLiteral"] }],
-    "template-curly-spacing": "off"
+    "template-curly-spacing": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "no-plusplus": "off",
+    "react/require-default-props": "off",
+    "react/forbid-prop-types": "off"
   }
 }

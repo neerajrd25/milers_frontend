@@ -38,8 +38,8 @@ const routes = (isLoggedIn) => [
       },
       { path: 'products/add', element: <AddProduct /> },
       { path: 'settings', element: <Settings /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
+      { path: '*', element: <Navigate to="/404" /> },
+    ],
   },
   {
     path: '/',
@@ -48,7 +48,7 @@ const routes = (isLoggedIn) => [
       { path: 'login', element: <Login /> },
       { path: '/', element: <Navigate to="/login" /> },
       { path: '404', element: <NotFound /> },
-      { path: '*', element: <Navigate to="/404" /> }
+      { path: '*', element: <Navigate to="/404" /> },
     ],
   },
 ];

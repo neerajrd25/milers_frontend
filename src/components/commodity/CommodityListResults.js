@@ -8,7 +8,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -77,7 +77,7 @@ const CommodityListResults = ({ listData, ...rest }) => {
 };
 
 CommodityListResults.propTypes = {
-  listData: PropTypes.array.isRequired
+  listData: PropTypes.array.isRequired,
 };
 
 export default CommodityListResults;

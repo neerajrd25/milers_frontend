@@ -172,7 +172,7 @@ function draw() {
         x + width,
         y + height,
         x + width - radius,
-        y + height
+        y + height,
       );
       ctx.lineTo(x + radius, y + height);
       ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
@@ -188,5 +188,5 @@ function draw() {
 }
 
 Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
-  draw
+  draw,
 });

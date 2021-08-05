@@ -1,6 +1,6 @@
 import {
   Box,
-  Button, IconButton, Paper, Typography
+  Button, IconButton, Paper, Typography,
 } from '@material-ui/core';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { PropTypes } from 'prop-types';
@@ -12,7 +12,7 @@ const DetailBar = ({
     sx={{
       display: 'flex',
       justifyContent: 'space-between',
-      padding: 1
+      padding: 1,
     }}
   >
     {/* <Card>
@@ -27,13 +27,13 @@ const DetailBar = ({
         {title}
       </Typography>
       {subTitle && (
-      <Typography
-        align="left"
-        variant="h6"
-        mx={5}
-      >
-        {subTitle}
-      </Typography>
+        <Typography
+          align="left"
+          variant="h6"
+          mx={5}
+        >
+          {subTitle}
+        </Typography>
       )}
     </Box>
     {showEndButton && (
@@ -59,7 +59,7 @@ DetailBar.propTypes = {
   endButtonText: PropTypes.string,
   showBackButton: PropTypes.bool,
   showEndButton: PropTypes.bool,
-  subTitle: PropTypes.string
+  subTitle: PropTypes.string,
 };
 
 export default DetailBar;

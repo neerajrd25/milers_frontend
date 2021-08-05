@@ -4,14 +4,14 @@ import {
   Button,
   IconButton,
   Card,
-  CardContent, InputAdornment, SvgIcon, TextField, Typography
+  CardContent, InputAdornment, SvgIcon, TextField, Typography,
 } from '@material-ui/core';
 import { PropTypes } from 'prop-types';
 import { Search as SearchIcon } from 'react-feather';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 
 const ListToolbar = ({
-  title, handleClick, buttonText, showBackButton, handleSearch
+  title, handleClick, buttonText, showBackButton, handleSearch,
 }) => {
   const [searchKey, setSearchedKey] = useState('');
 
@@ -25,14 +25,14 @@ const ListToolbar = ({
       <Box
         sx={{
           display: 'flex',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
         }}
       >
         <Typography variant="h4" gutterBottom>
           {showBackButton && (
-          <IconButton aria-label="back">
-            <ArrowBack />
-          </IconButton>
+            <IconButton aria-label="back">
+              <ArrowBack />
+            </IconButton>
           )}
           {title}
         </Typography>
@@ -79,7 +79,7 @@ const ListToolbar = ({
                         <SearchIcon />
                       </SvgIcon>
                     </InputAdornment>
-                  )
+                  ),
                 }}
                 placeholder="Search Vendor"
                 variant="outlined"

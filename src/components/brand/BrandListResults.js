@@ -11,7 +11,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
+  Typography,
 } from '@material-ui/core';
 
 const BrandListResults = ({ brands }) => {
@@ -44,7 +44,7 @@ const BrandListResults = ({ brands }) => {
     } else if (selectedIndex > 0) {
       newSelectedCustomerIds = newSelectedCustomerIds.concat(
         selectedCustomerIds.slice(0, selectedIndex),
-        selectedCustomerIds.slice(selectedIndex + 1)
+        selectedCustomerIds.slice(selectedIndex + 1),
       );
     }
     setSelectedCustomerIds(newSelectedCustomerIds);
@@ -111,7 +111,7 @@ const BrandListResults = ({ brands }) => {
                     <Box
                       sx={{
                         alignItems: 'center',
-                        display: 'flex'
+                        display: 'flex',
                       }}
                     >
 
@@ -155,7 +155,7 @@ const BrandListResults = ({ brands }) => {
 };
 
 BrandListResults.propTypes = {
-  brands: PropTypes.array.isRequired
+  brands: PropTypes.array.isRequired,
 };
 
 export default BrandListResults;

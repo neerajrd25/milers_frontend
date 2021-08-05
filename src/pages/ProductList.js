@@ -3,7 +3,7 @@ import {
   Box,
   Container,
   Grid,
-  Pagination
+  Pagination,
 } from '@material-ui/core';
 import ProductListToolbar from 'src/components/product/ProductListToolbar';
 import ProductCard from 'src/components/product//ProductCard';
@@ -18,7 +18,7 @@ const ProductList = () => (
       sx={{
         backgroundColor: 'background.default',
         minHeight: '100%',
-        py: 3
+        py: 3,
       }}
     >
       <Container maxWidth={false}>
@@ -45,7 +45,7 @@ const ProductList = () => (
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            pt: 3
+            pt: 3,
           }}
         >
           <Pagination

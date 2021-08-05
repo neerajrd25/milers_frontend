@@ -6,19 +6,19 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  TextField
+  TextField,
 } from '@material-ui/core';
 
 const SettingsPassword = (props) => {
   const [values, setValues] = useState({
     password: '',
-    confirm: ''
+    confirm: '',
   });
 
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -57,7 +57,7 @@ const SettingsPassword = (props) => {
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
-            p: 2
+            p: 2,
           }}
         >
           <Button

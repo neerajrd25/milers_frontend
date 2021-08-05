@@ -10,8 +10,8 @@ const DashboardLayoutRoot = experimentalStyled('div')(
     display: 'flex',
     height: '100%',
     overflow: 'hidden',
-    width: '100%'
-  })
+    width: '100%',
+  }),
 );
 
 const DashboardLayoutWrapper = experimentalStyled('div')(
@@ -21,21 +21,21 @@ const DashboardLayoutWrapper = experimentalStyled('div')(
     overflow: 'hidden',
     paddingTop: 64,
     [theme.breakpoints.up('lg')]: {
-      paddingLeft: 256
-    }
-  })
+      paddingLeft: 256,
+    },
+  }),
 );
 
 const DashboardLayoutContainer = experimentalStyled('div')({
   display: 'flex',
   flex: '1 1 auto',
-  overflow: 'hidden'
+  overflow: 'hidden',
 });
 
 const DashboardLayoutContent = experimentalStyled('div')({
   flex: '1 1 auto',
   height: '100%',
-  overflow: 'auto'
+  overflow: 'auto',
 });
 
 const DashboardLayout = () => {

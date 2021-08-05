@@ -11,7 +11,7 @@ import InformationPanel from '../../components/common/information-panel';
 const VendorDetailPage = () => {
   const { id } = useParams();
   const {
-    data: { data }
+    data: { data },
   } = useQuery(['getOneVendor'], () => getOneVendor(id));
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const VendorDetailPage = () => {
     'Owner Name': `${ownerFirstName} ${ownerLastName}`,
     'GST Number': `${gstNumber}`,
     Contact: contact,
-    Address: `${(address || '').toUpperCase()}, ${city}. Pin-${pincode}`
+    Address: `${(address || '').toUpperCase()}, ${city}. Pin-${pincode}`,
     // 'Date Of Eastablishment': dayjs(dateOfEstablishment).format('DD-MM-YYYY')
   };
 
@@ -43,7 +43,7 @@ const VendorDetailPage = () => {
         sx={{
           backgroundColor: 'background.default',
           minHeight: '100%',
-          py: 3
+          py: 3,
         }}
       >
         <Container maxWidth={false}>

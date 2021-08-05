@@ -19,7 +19,7 @@ const AddProductPage = () => {
       <Box>
         <Container maxWidth={false}>
           <Box sx={{ pt: 3 }}>
-            <AddProductComponent submit={handleSubmit} defaultValues={{ name: 'neeraj', }} title="Add Product" />
+            <AddProductComponent submit={handleSubmit} defaultValues={{ name: 'neeraj' }} title="Add Product" />
           </Box>
         </Container>
       </Box>

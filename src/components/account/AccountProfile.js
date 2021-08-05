@@ -6,7 +6,7 @@ import {
   CardActions,
   CardContent,
   Divider,
-  Typography
+  Typography,
 } from '@material-ui/core';
 
 const user = {
@@ -15,7 +15,7 @@ const user = {
   country: 'USA',
   jobTitle: 'Senior Developer',
   name: 'Katarina Smith',
-  timezone: 'GTM-7'
+  timezone: 'GTM-7',
 };
 
 const AccountProfile = () => (
@@ -25,14 +25,14 @@ const AccountProfile = () => (
         sx={{
           alignItems: 'center',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
         }}
       >
         <Avatar
           src={user.avatar}
           sx={{
             height: 100,
-            width: 100
+            width: 100,
           }}
         />
         <Typography

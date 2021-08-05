@@ -6,7 +6,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  TextField
+  TextField,
 } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import { PropTypes } from 'prop-types';
@@ -33,14 +33,14 @@ const schema = Yup.object().shape({
 });
 
 const AddVendorComponent = ({
-  submit: save, defaultValues, title, showBackButton
+  submit: save, defaultValues, title, showBackButton,
 }) => {
   const {
-    register, handleSubmit, control, formState, onChange
+    register, handleSubmit, control, formState, onChange,
   } = useForm({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
   const { isValid, isDirty, errors } = formState;
 
@@ -51,7 +51,7 @@ const AddVendorComponent = ({
     label,
     validation = {},
     inputProps = {},
-    otherProps = {}
+    otherProps = {},
   ) => (
     <Grid item md={6} xs={12}>
       <TextField
@@ -81,8 +81,8 @@ const AddVendorComponent = ({
         console.log('error', message);
         // success('Success');
         alert(`Error ${message}`);
-      }
-    }
+      },
+    },
   );
   const submitData = async (data) => {
     // const {

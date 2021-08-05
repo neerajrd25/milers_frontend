@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import { Helmet } from 'react-helmet';
@@ -8,7 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import ListToolbar from '../../components/common/toolbar';
 
 const VendorComponent = () => {
-  const { data: { data: listData } } = useQuery(['getAllVendors'], () => getVendors());
+  const {
+    data: { data: listData },
+  } = useQuery(['getAllVendors'], () => getVendors());
   // const { data: { data: listData } } = useQuery(['GetProducts'], () => getProducts());
   const naviagte = useNavigate();
   const handleClick = () => {
@@ -30,7 +33,7 @@ const VendorComponent = () => {
         sx={{
           backgroundColor: 'background.default',
           minHeight: '100%',
-          py: 3
+          py: 3,
         }}
       >
         <Container maxWidth={false}>

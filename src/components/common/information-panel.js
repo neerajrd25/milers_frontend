@@ -2,7 +2,7 @@ import {
   Box, Card,
   CardContent,
   Grid,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const InformationPanel = ({
-  informationData
+  informationData,
 }) => {
   const classes = useStyles();
 
@@ -61,11 +61,11 @@ const InformationPanel = ({
 };
 
 InformationPanel.defaultProps = {
-  informationData: {}
+  informationData: {},
 };
 
 InformationPanel.propTypes = {
-  informationData: PropTypes.object
+  informationData: PropTypes.object,
 };
 
 export default InformationPanel;

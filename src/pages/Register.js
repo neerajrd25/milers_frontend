@@ -10,7 +10,7 @@ import {
   FormHelperText,
   Link,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core';
 
 const Register = () => {
@@ -27,7 +27,7 @@ const Register = () => {
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
         <Container maxWidth="sm">
@@ -37,7 +37,7 @@ const Register = () => {
               firstName: '',
               lastName: '',
               password: '',
-              policy: false
+              policy: false,
             }}
             validationSchema={
               Yup.object().shape({
@@ -45,7 +45,7 @@ const Register = () => {
                 firstName: Yup.string().max(255).required('First name is required'),
                 lastName: Yup.string().max(255).required('Last name is required'),
                 password: Yup.string().max(255).required('password is required'),
-                policy: Yup.boolean().oneOf([true], 'This field must be checked')
+                policy: Yup.boolean().oneOf([true], 'This field must be checked'),
               })
             }
             onSubmit={() => {
@@ -59,7 +59,7 @@ const Register = () => {
               handleSubmit,
               isSubmitting,
               touched,
-              values
+              values,
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
@@ -131,7 +131,7 @@ const Register = () => {
                   sx={{
                     alignItems: 'center',
                     display: 'flex',
-                    ml: -1
+                    ml: -1,
                   }}
                 >
                   <Checkbox

@@ -1,6 +1,6 @@
 import {
   Box,
-  Container
+  Container,
 } from '@material-ui/core';
 import { Helmet } from 'react-helmet';
 import { useQuery } from 'react-query';
@@ -24,7 +24,7 @@ const CommodityList = () => {
         sx={{
           backgroundColor: 'background.default',
           minHeight: '100%',
-          py: 3
+          py: 3,
         }}
       >
         <Container maxWidth={false}>

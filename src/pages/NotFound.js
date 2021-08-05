@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import {
   Box,
   Container,
-  Typography
+  Typography,
 } from '@material-ui/core';
 
 const NotFound = () => (
@@ -16,7 +16,7 @@ const NotFound = () => (
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}
     >
       <Container maxWidth="md">
@@ -43,7 +43,7 @@ const NotFound = () => (
               marginTop: 50,
               display: 'inline-block',
               maxWidth: '100%',
-              width: 560
+              width: 560,
             }}
           />
         </Box>

@@ -4,7 +4,7 @@ import {
   Card,
   CardContent,
   Grid,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoneyIcon from '@material-ui/icons/Money';
@@ -41,7 +41,7 @@ const Budget = (props) => (
             sx={{
               backgroundColor: red[600],
               height: 56,
-              width: 56
+              width: 56,
             }}
           >
             <MoneyIcon />
@@ -52,14 +52,14 @@ const Budget = (props) => (
         sx={{
           pt: 2,
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
       >
         <ArrowDownwardIcon sx={{ color: red[900] }} />
         <Typography
           sx={{
             color: red[900],
-            mr: 1
+            mr: 1,
           }}
           variant="body2"
         >

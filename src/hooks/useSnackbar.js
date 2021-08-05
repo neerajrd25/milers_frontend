@@ -9,22 +9,22 @@ const WAlert = (props) => (
 
 const useStyles = makeStyles(() => ({
   snackbar: {
-    top: 60
+    top: 60,
   },
   root: {
     background: '#373638',
     height: '44px',
-    borderRadius: '4px'
+    borderRadius: '4px',
   },
   action: {
-    color: '#ffffff'
+    color: '#ffffff',
   },
   success: {
-    color: '#b0d96e'
+    color: '#b0d96e',
   },
   error: {
-    color: '#ff7162'
-  }
+    color: '#ff7162',
+  },
 }));
 
 export default function useSnackbar() {
@@ -33,7 +33,7 @@ export default function useSnackbar() {
   const [snackBarData, setSnackBarData] = React.useState({
     message: '',
     severity: '',
-    duration: 2000
+    duration: 2000,
   });
 
   const handleClose = (_event, reason) => {
@@ -47,7 +47,7 @@ export default function useSnackbar() {
     setSnackBarData({
       message,
       severity: 'success',
-      duration: duration || 3000
+      duration: duration || 3000,
     });
     setOpen(true);
   };
@@ -78,7 +78,7 @@ export default function useSnackbar() {
           message:
             snackBarData.severity === 'success'
               ? classes.success
-              : classes.error
+              : classes.error,
         }}
       >
         {snackBarData.message}
@@ -90,6 +90,6 @@ export default function useSnackbar() {
     success,
     error,
     warning,
-    getSnackBar
+    getSnackBar,
   };
 }

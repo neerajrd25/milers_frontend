@@ -6,7 +6,7 @@ const theme = createTheme({
   palette: {
     background: {
       default: '#F4F6F8',
-      paper: colors.common.white
+      paper: colors.common.white,
     },
     primary: {
       contrastText: '#ffffff',
@@ -14,11 +14,11 @@ const theme = createTheme({
     },
     text: {
       primary: '#172b4d',
-      secondary: '#383a3d'
-    }
+      secondary: '#383a3d',
+    },
   },
   shadows,
-  typography
+  typography,
 });
 
 export default theme;

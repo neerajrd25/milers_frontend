@@ -8,7 +8,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -95,7 +95,7 @@ VendorList.defaultProps = {
 };
 
 VendorList.propTypes = {
-  listData: PropTypes.array
+  listData: PropTypes.array,
 };
 
 export default VendorList;

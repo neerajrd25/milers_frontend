@@ -4,7 +4,7 @@ import {
   Card,
   CardContent,
   Grid,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
@@ -38,7 +38,7 @@ const TotalCustomers = (props) => (
             sx={{
               backgroundColor: green[600],
               height: 56,
-              width: 56
+              width: 56,
             }}
           >
             <PeopleIcon />
@@ -49,7 +49,7 @@ const TotalCustomers = (props) => (
         sx={{
           alignItems: 'center',
           display: 'flex',
-          pt: 2
+          pt: 2,
         }}
       >
         <ArrowUpwardIcon sx={{ color: green[900] }} />
@@ -57,7 +57,7 @@ const TotalCustomers = (props) => (
           variant="body2"
           sx={{
             color: green[900],
-            mr: 1
+            mr: 1,
           }}
         >
           16%

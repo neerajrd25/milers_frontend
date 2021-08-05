@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import {
   Box,
   Container,
-  Grid
+  Grid,
 } from '@material-ui/core';
 import AccountProfile from 'src/components/account/AccountProfile';
 import AccountProfileDetails from 'src/components/account/AccountProfileDetails';
@@ -16,7 +16,7 @@ const Account = () => (
       sx={{
         backgroundColor: 'background.default',
         minHeight: '100%',
-        py: 3
+        py: 3,
       }}
     >
       <Container maxWidth="lg">

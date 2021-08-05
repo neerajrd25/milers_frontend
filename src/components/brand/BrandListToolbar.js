@@ -5,7 +5,7 @@ import {
   CardContent,
   TextField,
   InputAdornment,
-  SvgIcon
+  SvgIcon,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
 
@@ -14,7 +14,7 @@ const BrandListToolbar = (props) => (
     <Box
       sx={{
         display: 'flex',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
       }}
     >
       <Button>
@@ -46,7 +46,7 @@ const BrandListToolbar = (props) => (
                       <SearchIcon />
                     </SvgIcon>
                   </InputAdornment>
-                )
+                ),
               }}
               placeholder="Search brand"
               variant="outlined"
