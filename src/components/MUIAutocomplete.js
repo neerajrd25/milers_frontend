@@ -4,49 +4,49 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { Controller } from 'react-hook-form';
-import { Autocomplete } from '@material-ui/core';
+import Autocomplete from '@mui/material/Autocomplete';
 
 export default function CountrySelect({
-  control, validation, name, register,
+  name,
+  label,
+  options,
+  control,
+  validation = {},
+  errors = {},
+  inputProps = {},
+  otherProps = {},
 }) {
-  const [value, setValue] = React.useState(countries[0]);
-  const [inputValue, setInputValue] = React.useState('');
+  console.log('home re-rending', name);
+
+  // const [value, setValue] = React.useState(countries[0]);
+  // const [inputValue, setInputValue] = React.useState('');
   return (
     <Controller
+      // defaultValue={options[1]}
+      // rules={validation}
+      name={name}
+      control={control}
       render={({ field }) => (
         <Autocomplete
           {...field}
-          value={value}
-          inputValue={inputValue}
-          options={countries}
-          getOptionLabel={(option) => option.label}
+          // inputValue={value}
+          // value={value}
+          options={options}
+          getOptionLabel={(option) => option.name}
+          // isOptionEqualToValue={(option, value) => option.id === value.id}
           renderInput={(params) => (
             <TextField
+              fullWidth
               {...params}
-              label="Choose a country"
+              label={label}
               variant="outlined"
+              // error={!!errors[name]}
+              // helperText={errors && errors[name]?.message}
             />
           )}
           onChange={(_, data) => field.onChange(data)}
         />
       )}
-      {...register(name, validation)}
-      name={name}
-      control={control}
     />
   );
 }
-
-// function countryToFlag(isoCode) {
-//   return typeof String.fromCodePoint !== 'undefined'
-//     ? isoCode
-//       .toUpperCase()
-//       .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
-//     : isoCode;
-// }
-
-const countries = [
-  { code: 'AD', label: 'Andorra', phone: '376' },
-  { code: 'AE', label: 'United Arab Emirates', phone: '971' },
-  { code: 'AF', label: 'Afghanistan', phone: '93' },
-];

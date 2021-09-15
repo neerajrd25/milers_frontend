@@ -11,6 +11,12 @@ export const getBrands = async () => axios.get(`${REACT_APP_API_BASE_URL}brands`
 export const getProductTypes = async () => axios.get(`${REACT_APP_API_BASE_URL}product-types`);
 export const getProducts = async () => axios.get(`${REACT_APP_API_BASE_URL}products`);
 
+export const getCategories = async () => axios.get(`${REACT_APP_API_BASE_URL}masters/categories`);
+export const getSizes = async () => axios.get(`${REACT_APP_API_BASE_URL}masters/sizes`);
+export const getMaterials = async () => axios.get(`${REACT_APP_API_BASE_URL}masters/materials`);
+export const getBrakes = async () => axios.get(`${REACT_APP_API_BASE_URL}masters/brakes`);
+export const getSuspensions = async () => axios.get(`${REACT_APP_API_BASE_URL}masters/suspensions`);
+
 // vendor
 export const getVendors = async () => axios.get(`${REACT_APP_API_BASE_URL}vendors`);
 export const getOneVendor = async (id) => axios.get(`${REACT_APP_API_BASE_URL}vendors/${id}`);

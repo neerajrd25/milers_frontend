@@ -1,0 +1,16 @@
+placeholder code 
+
+<CardContent>
+            <Grid container spacing={2}>
+              <Grid item md={12}>
+                <Typography variant="h4"> Bike Details</Typography>
+              </Grid>
+              {/* {renderTextField('wheelSize', 'Wheel Size')}
+              {renderTextField('weight', 'Weight')}
+              {renderTextField('shifters', 'Shifters')}
+              {renderTextField('crankset', 'Crankset')}
+              {renderTextField('frontDerailer', 'Front Derailer')}
+              {renderTextField('rearDerailer', 'Rear Derailer')} */}
+
+            </Grid>
+          </CardContent>
